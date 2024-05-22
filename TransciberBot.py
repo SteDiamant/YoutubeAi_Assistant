@@ -4,6 +4,7 @@ from openai import OpenAI
 from langchain_community.document_loaders import YoutubeLoader
 import streamlit as st
 from pathlib import Path
+import openai
 
 load_dotenv()
 
@@ -131,6 +132,9 @@ def main():
     st.title("Generator from YouTube Video")
     path = st.text_input(label="Enter a YouTube URL")
     if path:
+        # Initialize the session state if it doesn't exist
+        if 'messages' not in st.session_state:
+            st.session_state.messages = []
         try:
             transcription, minutes, docx_filename = process_youtube_video(path)
             
@@ -145,16 +149,42 @@ def main():
             with st.expander('Action Items 🎯'):
                 st.write(minutes.get('action_items'))
 
-            #st.audio(audio_filename)
-            c1,c2=st.columns([1,1.5])
-            with c1:
-                #st.download_button(label='Download Audio Transcription', data=open(audio_filename, 'rb'), file_name=audio_filename)
-                pass
-            with c2:
-                pass
-                #st.download_button(label='Download Overview', data=open(docx_filename, 'rb'), file_name=docx_filename)
+            # Placeholder for user chat input
+            user_input = st.chat_input(placeholder='Your Message')
+
+            # Handle user input and get a response from the AI assistant
+            if user_input:
+                st.session_state.messages.append({"role": "user", "content": user_input})
+                
+                # Get response from OpenAI
+                response = openai.chat.completions.create(
+                    model="gpt-3.5-turbo",
+                    messages=[
+                        {"role": "system", "content": 
+                        f"""You are an AI assistant. 
+                        Your job is answer questions reladed to the meeting minutes.
+                        To do that you will receive 3 pieces of information: the abstract summary, 
+                        the key points and the action items.
+                            1.abstract summary:{minutes.get("abstract_summary")} 
+                            2.key points:{minutes.get('key_points')}
+                            3.action items:{minutes.get('action_items')}"""},
+                        {"role": "user", "content": user_input}
+                    ]
+                )
+                
+                # Extract and display the assistant's response
+                assistant_response = response.choices[0].message.content
+                st.session_state.messages.append({"role": "assistant", "content": assistant_response})
+                
+
+            # Display previous chat messages from the session state
+            for message in st.session_state.messages:
+                with st.chat_message(message['role']):
+                    st.write(message['content'])
+
         except Exception as e:
             st.error(f"An error occurred: {e}")
+
 
 if __name__ == "__main__":
     main()
