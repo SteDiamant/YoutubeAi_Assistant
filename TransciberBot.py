@@ -110,19 +110,19 @@ def process_youtube_video(url):
 
     minutes = meeting_minutes(transcription)
 
-    audio_response = client.audio.speech.create(
-        model="tts-1",
-        voice="alloy",
-        input=minutes['abstract_summary']
-    )
+    # audio_response = client.audio.speech.create(
+    #     model="tts-1",
+    #     voice="alloy",
+    #     input=minutes['abstract_summary']
+    # )
 
     path_url = Path(url)
-    audio_filename = f'audio_{path_url.stem}.mp3'
-    audio_response.write_to_file(audio_filename)
+    #audio_filename = f'audio_{path_url.stem}.mp3'
+    #audio_response.write_to_file(audio_filename)
     docx_filename = f'{path_url.stem}.docx'
-    save_as_docx(minutes=minutes, filename=docx_filename)
+    #save_as_docx(minutes=minutes, filename=docx_filename)
 
-    return transcription, minutes, audio_filename, docx_filename
+    return transcription, minutes, docx_filename
 
 # Streamlit UI
 st.set_page_config(layout='wide')
@@ -132,7 +132,7 @@ def main():
     path = st.text_input(label="Enter a YouTube URL")
     if path:
         try:
-            transcription, minutes, audio_filename, docx_filename = process_youtube_video(path)
+            transcription, minutes, docx_filename = process_youtube_video(path)
             
             st.video(path)
 
@@ -145,12 +145,14 @@ def main():
             with st.expander('Action Items 🎯'):
                 st.write(minutes.get('action_items'))
 
-            st.audio(audio_filename)
+            #st.audio(audio_filename)
             c1,c2=st.columns([1,1.5])
             with c1:
-                st.download_button(label='Download Audio Transcription', data=open(audio_filename, 'rb'), file_name=audio_filename)
+                #st.download_button(label='Download Audio Transcription', data=open(audio_filename, 'rb'), file_name=audio_filename)
+                pass
             with c2:
-                st.download_button(label='Download Overview', data=open(docx_filename, 'rb'), file_name=docx_filename)
+                pass
+                #st.download_button(label='Download Overview', data=open(docx_filename, 'rb'), file_name=docx_filename)
         except Exception as e:
             st.error(f"An error occurred: {e}")
 
