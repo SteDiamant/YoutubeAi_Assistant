@@ -1,7 +1,6 @@
 import os
 from dotenv import load_dotenv
 from openai import OpenAI
-from docx import Document
 from langchain_community.document_loaders import YoutubeLoader
 import streamlit as st
 from pathlib import Path
@@ -96,6 +95,7 @@ def meeting_minutes(transcription):
     }
 
 def save_as_docx(minutes, filename):
+    from docx import Document  # type: ignore
     doc = Document()
     for key, value in minutes.items():
         heading = ' '.join(word.capitalize() for word in key.split('_'))
@@ -128,7 +128,7 @@ def process_youtube_video(url):
 st.set_page_config(layout='wide')
 
 def main():
-    st.title("Meeting Minutes Generator from YouTube Video")
+    st.title("Generator from YouTube Video")
     path = st.text_input(label="Enter a YouTube URL")
     if path:
         try:
@@ -142,7 +142,7 @@ def main():
             with st.expander('Key Points :key:'):
                 st.write(minutes.get('key_points'))
 
-            with st.expander('Action Items :🎯:'):
+            with st.expander('Action Items 🎯'):
                 st.write(minutes.get('action_items'))
 
             st.audio(audio_filename)
