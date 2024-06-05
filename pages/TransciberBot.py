@@ -137,7 +137,7 @@ def main():
             st.session_state.messages = []
         try:
             transcription, minutes, docx_filename = process_youtube_video(path)
-            
+            st.write(transcription)
             st.video(path)
 
             with st.expander(label='Abstract Summary'):
