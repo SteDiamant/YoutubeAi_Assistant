@@ -123,7 +123,7 @@ def main():
             img = Image.open(compressed_image_path)
             st.image(img)
             category = identify_printplaten_grade(compressed_image_path, system_desc)
-            st.write(category)
+            st.success(category['choices'][0]['message']['content'])
     
     if uploaded_image and not submitted:
         st.sidebar.warning("Please press the Submit button to classify the PCB.")
