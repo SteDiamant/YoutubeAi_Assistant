@@ -109,7 +109,7 @@ def main():
                 - If the printplaten is almost or completely not populated with ICs, CPUs, or Gold, and often brown in color/heavy weight with large capacitors, classify as Printplaten C.
 
             5. **Return Classification:**
-            - Return only the class of the printplaten (AA, A, B, C) without providing any reasoning behind the grade.
+            - Return the class of the printplaten (AA, A, B, C) with reasoning behind the grade.
 
             Image:""", height=500)
     
@@ -123,7 +123,7 @@ def main():
             img = Image.open(compressed_image_path)
             st.image(img)
             category = identify_printplaten_grade(compressed_image_path, system_desc)
-            st.success(category['choices'][0]['message']['content'])
+            st.write(category)
     
     if uploaded_image and not submitted:
         st.sidebar.warning("Please press the Submit button to classify the PCB.")
