@@ -5,7 +5,6 @@ import base64
 import requests
 from dotenv import load_dotenv
 
-load_dotenv()
 st.set_page_config(layout="wide")
 
 # Function to encode the image
