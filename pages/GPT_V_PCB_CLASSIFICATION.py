@@ -120,7 +120,7 @@ def main():
     # Classification logic
     if submitted and uploaded_image:
         with st.spinner('Compressing and classifying image...'):
-            compressed_image_path = compress_png_to_size(uploaded_image, f'uploaded_images/compressed_{uploaded_image.name}', 20)
+            compressed_image_path = compress_png_to_size(uploaded_image, f'compressed_{uploaded_image.name}', 20)
             img = Image.open(compressed_image_path)
             st.sidebar.image(img)
             category = identify_printplaten_grade(compressed_image_path, system_desc)
