@@ -121,12 +121,12 @@ def main():
         with st.spinner('Compressing and classifying image...'):
             compressed_image_path = compress_png_to_size(uploaded_image, f'compressed_{uploaded_image.name}', 20)
             img = Image.open(compressed_image_path)
-            st.sidebar.image(img)
+            st.image(img)
             category = identify_printplaten_grade(compressed_image_path, system_desc)
             st.write(category['choices'][0]['message']['content'])
     
     if uploaded_image and not submitted:
-        st.sidebar.warning("Please press the Submit button to classify the printplaten.")
+        st.sidebar.warning("Please press the Submit button to classify the PCB.")
 
 if __name__ == "__main__":
     main()
