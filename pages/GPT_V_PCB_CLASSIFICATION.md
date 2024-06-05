@@ -1,7 +1,7 @@
 # 📋 PCB Classification Project Documentation
 
 ## 📖 Overview
-The PCB Classification Project aims to streamline the classification process of printed circuit boards (PCBs) using the advanced capabilities of the ChatGPT-4 Vision model. This innovative approach addresses common challenges faced in traditional classification methods, particularly those related to the data validation loop, such as:
+The PCB Classification Project aims to streamline the classification process of printed circuit boards (PCBs) using the advanced capabilities of the ChatGPT-4 Vision model. This approach addresses common challenges faced in traditional classification methods, particularly those related to the data validation loop, such as:
 
 - 🏷️ Human error in labeling
 - ⚖️ Disagreements in labeling
@@ -62,7 +62,7 @@ Given the complexity of the classification problem, minimizing the error margin 
 
 The goal is to continuously refine the model through iterative validation and tuning, ensuring high accuracy and reliability in PCB classification.
 
-## ❓ Potential Questions and Concerns
+## ❓ Questions and Concerns
 
 ### 💲 Cost of Implementation
 The primary cost associated with implementing advanced vision models involves API calling. Frequent and extensive use of the OpenAI API can lead to significant expenses, particularly with high volumes of data processing. Additionally, the high volume of PCB waste that needs to be sorted can further increase costs. Budgeting for these ongoing and potentially high costs is essential to ensure the project's financial viability.
@@ -73,4 +73,9 @@ Sharing data with OpenAI for model improvement raises concerns about data privac
 ### 🤝 Dependence on External Providers
 Relying on OpenAI and similar providers for ongoing updates and improvements can create a dependency that might be risky if there are changes in service terms, costs, or availability. Ensuring a backup plan or alternative solutions is crucial for mitigating this risk.
 
+### 🧩 Figuring Out the Prompt
+Determining the correct way to instruct the AI model should be an iterative process. Handling edge cases effectively is crucial for the project's success. 
+- **🔄 Iterative Refinement**: Continuously refining the prompt instructions based on the model's performance and feedback.
+- **📑 Documentation of Edge Cases**: Thoroughly documenting edge cases and the corresponding instructions to ensure consistent handling of similar situations in the future.
+- **🧪 Experimentation**: Regularly experimenting with different prompt configurations to identify the most effective instructions for accurate classification.
 
