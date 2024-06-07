@@ -48,7 +48,7 @@ The criteria for classifying PCBs are as follows:
 ### 🔍 Testing and Validation
 Given the complexity of the classification problem, minimizing the error margin is crucial for achieving accurate results. A robust validation dataset and a comprehensive validation pipeline are implemented, including:
 
-1. **🗂️ Validation Dataset**: A large and diverse dataset of labeled PCB images is used to train and validate the model. This dataset covers various PCB types, colors, and component densities to ensure the model's versatility and accuracy.
+1. **🗂️ Validation Dataset**: A large and diverse dataset of labeled PCB images is used to validate and evaluate the model. This dataset covers various PCB classes and different edge cases.
    
 2. **🔍 Validation Pipeline**: The validation process involves rigorous testing of the model against the validation dataset to assess its performance. 
     - **❌ Error Analysis**: Identifying and analyzing misclassifications to understand the model's limitations and areas for improvement. The model can output the reasoning behind the classification, and special instructions can be given to the prompt to process extreme cases (e.g., with batteries) in predefined ways.
@@ -79,3 +79,13 @@ Determining the correct way to instruct the AI model should be an iterative proc
 - **📑 Documentation of Edge Cases**: Thoroughly documenting edge cases and the corresponding instructions to ensure consistent handling of similar situations in the future.
 - **🧪 Experimentation**: Regularly experimenting with different prompt configurations to identify the most effective instructions for accurate classification.
 
+# Demo
+ Link: https://test-sd-ai.streamlit.app/GPT_V_PCB_CLASSIFICATION
+
+![UI](../demo_images_ui1.png)
+
+1. Choose THe GPT_V_PCB_CLASSIFICATION project from the sidebar
+2. Upload a PCB image in png format
+3. Examine the Prompt
+   ![Prompt](../demo_images_ui1.png)
+4. Submit the Image for Compressions and Processing

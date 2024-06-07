@@ -78,7 +78,7 @@ def main():
     
     # System description
     with st.expander("System Description"):
-        system_desc = st.text_area("System Description", """You are provided with an image of a printplaten. Your task is to classify the grade of the printplaten based on the following criteria:
+        system_desc = st.text_area("Describe Here", """You are provided with an image of a printplaten. Your task is to classify the grade of the printplaten based on the following criteria:
             | Bins            | Criteria                                                                                                                                                                 |
             |-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
             | Printplaten AA  | At least one side heavily populated with ICs and CPUs (almost no space left on the PCB). No attachments like batteries, aluminum, iron, or capacitors.                  |
