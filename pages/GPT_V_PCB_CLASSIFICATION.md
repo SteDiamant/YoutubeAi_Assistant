@@ -87,7 +87,7 @@ Determining the correct way to instruct the AI model should be an iterative proc
 1. Choose THe GPT_V_PCB_CLASSIFICATION project from the sidebar
 2. Upload a PCB image in png format
 3. Examine the Prompt
-   ![Prompt](../demo_images_ui1.png)
+   ![Prompt](../prompt.png)
 4. Submit the Image for Compressions and Processing
    PDF: [Check Results Here](../pages/results.pdf)
    
