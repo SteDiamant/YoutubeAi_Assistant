@@ -89,3 +89,5 @@ Determining the correct way to instruct the AI model should be an iterative proc
 3. Examine the Prompt
    ![Prompt](../demo_images_ui1.png)
 4. Submit the Image for Compressions and Processing
+   PDF: [Check Results Here](../pages/results.pdf)
+   
