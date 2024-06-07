@@ -37,7 +37,7 @@ def compress_png_to_size(input_image, output_path, target_size_mb):
     st.success(f"Image Compressed Successfully. Final size: {file_size / (1024 * 1024):.2f} MB")
     return output_path
 
-def identify_printplaten_grade(image_path, system_desc):
+def identify_PCB_grade(image_path, system_desc):
     # Getting the base64 string
     base64_image = encode_image(image_path)
 
@@ -78,38 +78,38 @@ def main():
     
     # System description
     with st.expander("System Description"):
-        system_desc = st.text_area("Describe Here", """You are provided with an image of a printplaten. Your task is to classify the grade of the printplaten based on the following criteria:
+        system_desc = st.text_area("Describe Here", """You are provided with an image of a PCB. Your task is to classify the grade of the PCB based on the following criteria:
             | Bins            | Criteria                                                                                                                                                                 |
-            |-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-            | Printplaten AA  | At least one side heavily populated with ICs and CPUs (almost no space left on the PCB). No attachments like batteries, aluminum, iron, or capacitors.                  |
-            | Printplaten A   | At least one side well populated with ICs and CPUs. No attachments like batteries, aluminum, iron, or capacitors.                                                       |
-            | Printplaten B   | Quality between A & C. At least one side moderately populated.                                                                                                          |
-            | Printplaten C   | Almost or completely not populated with ICs, CPUs, or Gold. No attachments like batteries, often brown in color / heavy weight. Large capacitors.                       |
+            |-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------  |
+            | AA  | At least one side heavily populated with ICs and CPUs (almost no space left on the PCB). No attachments like batteries, aluminum, iron, or capacitors.                  |
+            | A   | At least one side well populated with ICs and CPUs. No attachments like batteries, aluminum, iron, or capacitors.                                                       |
+            | B   | Quality between A & C. At least one side moderately populated.                                                                                                          |
+            | C   | Almost or completely not populated with ICs, CPUs, or Gold. No attachments like batteries, often brown in color / heavy weight. Large capacitors.                       |
 
-            Steps to Classify Printplaten Grade:
+            Steps to Classify PCB Grade:
 
             1. **Image Examination:**
-            - Carefully observe the provided image of the printplaten.
+            - Carefully observe the provided image of the PCB.
 
             2. **Check for Heavy Population (ICs and CPUs):**
             - Determine if at least one side of the PCB is heavily populated with Integrated Circuits (ICs) and Central Processing Units (CPUs).
             - Assess if there is almost no space left on the PCB due to the dense population of ICs and CPUs.
 
             3. **Check for Attachments:**
-            - Look for any attachments on the printplaten such as batteries, aluminum, iron, or capacitors.
+            - Look for any attachments on the PCB such as batteries, aluminum, iron, or capacitors.
 
             4. **Classification Decision:**
-            - **Printplaten AA:**
-                - If at least one side is heavily populated with ICs and CPUs (almost no space left) and there are no attachments like batteries, aluminum, iron, or capacitors, classify as Printplaten AA.
-            - **Printplaten A:**
-                - If at least one side is well populated with ICs and CPUs and there are no attachments like batteries, aluminum, iron, or capacitors, classify as Printplaten A.
-            - **Printplaten B:**
-                - If the quality is between A & C and at least one side is moderately populated, classify as Printplaten B.
-            - **Printplaten C:**
-                - If the printplaten is almost or completely not populated with ICs, CPUs, or Gold, and often brown in color/heavy weight with large capacitors, classify as Printplaten C.
+            - **PCB AA:**
+                - If at least one side is heavily populated with ICs and CPUs (almost no space left) and there are no attachments like batteries, aluminum, iron, or capacitors, classify as PCB AA.
+            - **PCB A:**
+                - If at least one side is well populated with ICs and CPUs and there are no attachments like batteries, aluminum, iron, or capacitors, classify as PCB A.
+            - **PCB B:**
+                - If the quality is between A & C and at least one side is moderately populated, classify as PCB B.
+            - **PCB C:**
+                - If the PCB is almost or completely not populated with ICs, CPUs, or Gold, and often brown in color/heavy weight with large capacitors, classify as PCB C.
 
             5. **Return Classification:**
-            - Return the class of the printplaten (AA, A, B, C) with reasoning behind the grade.
+            - Return the class of the PCB (AA, A, B, C) with reasoning behind the grade.
 
             Image:""", height=500)
     
@@ -122,7 +122,7 @@ def main():
             compressed_image_path = compress_png_to_size(uploaded_image, f'compressed_{uploaded_image.name}', 20)
             img = Image.open(compressed_image_path)
             st.image(img)
-            category = identify_printplaten_grade(compressed_image_path, system_desc)
+            category = identify_PCB_grade(compressed_image_path, system_desc)
             st.markdown(category['choices'][0]['message']['content'])
     
     if uploaded_image and not submitted:
