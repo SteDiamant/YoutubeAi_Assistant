@@ -9,3 +9,6 @@ ultralytics-thop==0.2.7
 opencv-python-headless
 xgboost
 joblib
+skilearn
+scikit-image==0.23.2
+scikit-learn==1.5.0
