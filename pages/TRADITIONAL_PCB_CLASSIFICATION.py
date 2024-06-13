@@ -160,7 +160,7 @@ def rearrange_columns(column_names, new_order):
 
 
 with st.expander('Component Detection Model'):
-    method=st.selectbox('Select a method',['random','AA','A','B','C'])
+    method=st.selectbox('Select a method',['AA','A','B','C'])
     random_path=get_random_image_path(method)
     image=preprocess_image_for_display(random_path)
     im,results=apply_yolo_model_return_image(image)
