@@ -4,6 +4,7 @@ python-docx
 langchain_community
 streamlit
 youtube-transcript-api
-ultralytics
+ultralytics==8.2.28
+ultralytics-thop==0.2.7
 opencv-python
 xgboost
