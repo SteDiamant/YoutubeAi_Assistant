@@ -4,3 +4,4 @@ python-docx
 langchain_community
 streamlit
 youtube-transcript-api
+ultralytics
