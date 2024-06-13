@@ -9,8 +9,6 @@ import numpy as np
 import xgboost as xgb
 import joblib
 from sklearn.preprocessing import LabelEncoder
-import matplotlib.pyplot as plt
-import plotly.express as px
 from math import pi
 
 st.set_page_config(page_title="E-Waste Project", page_icon="🌍", layout="wide", initial_sidebar_state="expanded")
@@ -155,15 +153,7 @@ def rearrange_columns(column_names, new_order):
             rearranged_columns.append(col_name)
     return rearranged_columns
 
-def plot_bar_composition_chart(data):
-    # Convert data to DataFrame
-    df = pd.DataFrame(data).drop('Pin_Count', axis=1)
-    # Plot using Plotly Express with dark theme
-    fig = px.bar(df, barmode='stack', labels={'value': 'Mass (g)', 'variable': 'Devices'},
-                width=1200, height=600)
-    fig.update_layout(template='plotly_dark', xaxis_tickangle=-45)
-    #Return the figure
-    return fig
+
 
 
 
