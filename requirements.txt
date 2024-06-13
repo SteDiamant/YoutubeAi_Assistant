@@ -5,3 +5,5 @@ langchain_community
 streamlit
 youtube-transcript-api
 ultralytics
+cv2
+xgboost
