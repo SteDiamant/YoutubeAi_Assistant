@@ -6,4 +6,7 @@ pages/*.mp3
 pages/*.docx
 pages/patterns
 pages/uploaded_images
-models
+models/*.ipynb
+pages/PCB_CLASSIFICATION.py
+demo_images/Sahi_Processed_images
+demo_images/Yolo_Processed_images
