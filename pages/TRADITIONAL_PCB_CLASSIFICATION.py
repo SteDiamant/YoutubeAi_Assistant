@@ -29,10 +29,10 @@ def string_to_json(input_string):
         return results
 
 def get_random_image_path(method):
-    ROOT_DIRECTORIES=[r'/demo_images/AA',
-                      r'/demo_images/A',
-                      r'/demo_images/B',
-                      r'/demo_images/C']
+    ROOT_DIRECTORIES=[r'./demo_images/AA',
+                      r'./demo_images/A',
+                      r'./demo_images/B',
+                      r'./demo_images/C']
     if method=='random':
         ROOT_DIRECTORY=np.random.choice(ROOT_DIRECTORIES)
         list_files = os.listdir(ROOT_DIRECTORY)
@@ -94,7 +94,7 @@ def preprocess_image_for_display(image_path):
     return cropped_image
 
 def apply_yolo_model_return_image(image_path):
-    model=YOLO(r'/models/best.pt')
+    model=YOLO(r'./models/best.pt')
     results = model(image_path)  # results list
     im, result = process_YOLO_results(results)
     return im,(result.tojson())
@@ -195,7 +195,7 @@ with st.expander('Component Detection Model'):
     
 with st.expander('Classifier Model Prediction'):
     #Load the model
-    model = joblib.load('/models/model2.pkl')
+    model = joblib.load(r'./models/model2.pkl')
     label_encoder = LabelEncoder()
     image_features['class'] = label_encoder.fit_transform(image_features['class'])
     image_features['color'] = label_encoder.fit_transform(image_features['color'])
