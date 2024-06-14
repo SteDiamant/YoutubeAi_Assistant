@@ -10,7 +10,7 @@ import xgboost as xgb
 import joblib
 from sklearn.preprocessing import LabelEncoder
 from math import pi
-
+import base64
 st.set_page_config(page_title="E-Waste Project", page_icon="🌍", layout="wide", initial_sidebar_state="expanded")
 
 def string_to_json(input_string):
@@ -154,11 +154,14 @@ def rearrange_columns(column_names, new_order):
     return rearranged_columns
 
 
-
-
-
-
-
+file_ = open("TSE-Project Approach 1[Autosaved].gif", "rb")
+contents = file_.read()
+data_url = base64.b64encode(contents).decode("utf-8")
+file_.close()
+st.markdown(
+    f'<div style="display: flex; justify-content: center;"><img src="data:image/gif;base64,{data_url}" alt="GPT approach" width="800" ></div>',
+    unsafe_allow_html=True
+)
 with st.expander('Component Detection Model'):
     method=st.selectbox('Select a method',['AA','A','B','C'])
     random_path=get_random_image_path(method)

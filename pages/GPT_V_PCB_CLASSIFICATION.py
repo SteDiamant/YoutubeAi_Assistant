@@ -73,6 +73,16 @@ def identify_PCB_grade(image_path, system_desc):
 def main():
     st.title("GPT V PCB Classification")
     
+    file_ = open("TSE-Project [Autosaved].gif", "rb")
+    contents = file_.read()
+    data_url = base64.b64encode(contents).decode("utf-8")
+    file_.close()
+
+    st.markdown(
+        f'<div style="display: flex; justify-content: center;"><img src="data:image/gif;base64,{data_url}" alt="GPT approach" width="800" ></div>',
+        unsafe_allow_html=True
+    )
+    
     # File uploader
     uploaded_image = st.sidebar.file_uploader("Choose an image...", type="png")
     
