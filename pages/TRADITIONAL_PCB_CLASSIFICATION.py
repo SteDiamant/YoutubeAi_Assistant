@@ -179,7 +179,7 @@ with st.expander('Component Detection Model'):
         class_name=random_path.split('/')[-1].split('_')[0]
         sample_id=random_path
         st.subheader(f"Class: {class_name}")
-        st.subheader(f"Most Dominant Color: {most_dominant_color(random_path)}")
+        st.subheader(f"Color: {most_dominant_color(random_path)}")
         st.image(image,use_column_width=True)
     with c2:
         st.dataframe(transposed_classes)
@@ -255,12 +255,12 @@ with st.expander('Classifier Model Prediction'):
         "X": "Miscellaneous Components (count and area normalized against the image size)"
     }
     st.subheader("Feature Selection")
-    for feature in feature_descriptions:
-        if any(keyword in feature for keyword in combined_features.keys()):
-            category = feature.split("_")[0]
-            st.write(f"- **{combined_features[category]}**: {feature_descriptions[feature]}")
-        else:
-            st.write(f"- **{feature}**: {feature_descriptions[feature]}")
+    # for feature in feature_descriptions:
+    #     if any(keyword in feature for keyword in combined_features.keys()):
+    #         category = feature.split("_")[0]
+    #         st.write(f"- **{combined_features[category]}**: {feature_descriptions[feature]}")
+    #     else:
+    #         st.write(f"- **{feature}**: {feature_descriptions[feature]}")
     st.subheader(f'Feature Importance' )
     model_data = pd.DataFrame(model_data).set_index('Feature')
     st.write(model_data.T)
