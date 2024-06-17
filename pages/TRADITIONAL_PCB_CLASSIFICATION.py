@@ -154,7 +154,7 @@ def rearrange_columns(column_names, new_order):
     return rearranged_columns
 
 
-file_ = open("TSE-Project Approach 1[Autosaved].gif", "rb")
+file_ = open("TraditionalClassificationPCB.gif", "rb")
 contents = file_.read()
 data_url = base64.b64encode(contents).decode("utf-8")
 file_.close()
