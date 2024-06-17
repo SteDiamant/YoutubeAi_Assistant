@@ -179,7 +179,7 @@ with st.expander('Component Detection Model'):
         class_name=random_path.split('/')[-1].split('_')[0]
         sample_id=random_path
         st.subheader(f"Class: {class_name}")
-        st.subheader(f"Sample ID: {class_name}   Most Dominant Color: {most_dominant_color(random_path)}")
+        st.subheader(f"Most Dominant Color: {most_dominant_color(random_path)}")
         st.image(image,use_column_width=True)
     with c2:
         st.dataframe(transposed_classes)
