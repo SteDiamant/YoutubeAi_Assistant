@@ -6,7 +6,7 @@ streamlit
 youtube-transcript-api
 ultralytics
 ultralytics-thop
-opencv-python-headless
+opencv-contrib-python-headless
 xgboost
 joblib
 scikit-learn==1.5.0
